@@ -15,6 +15,36 @@ class DynamicObject
             super
         end
     end    
+    
+    def self.makeFromHash(hash)
+        obj = DynamicObject.new
+        
+        hash.each { |key, value |
+            if value.is_a? Hash
+                value = makeFromHash(value)
+            end
+            
+            obj.setValue(key.intern, value)
+        }
+        
+        return obj
+    end
+    
+    def setValue(name, value)
+        if (name.is_a? Symbol)
+            @values[name] = value
+        else
+            @values[name.intern] = value
+        end
+    end
+    
+    def getValue(name)
+        if (name.is_a? Symbol)
+            return @values[name]
+        else
+            return @values[name.intern]
+        end
+    end
 end
 
 end
