@@ -22,12 +22,30 @@ class DynamicObject
         hash.each { |key, value |
             if value.is_a? Hash
                 value = makeFromHash(value)
+            elsif value.is_a? Array
+                value = makeArray(value)
             end
             
             obj.setValue(key.intern, value)
         }
         
         return obj
+    end
+    
+    def self.makeArray(array)
+        value = []
+        
+        array.each {|element|
+            if element.is_a? Hash
+                value.push(makeFromHash(element))
+            elsif element.is_a? Array
+                value.push(makeArray(element))
+            else
+                value.push(element)
+            end
+        }
+        
+        return value
     end
     
     def setValue(name, value)
@@ -48,5 +66,4 @@ class DynamicObject
 end
 
 end
-
 

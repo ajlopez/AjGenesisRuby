@@ -52,5 +52,28 @@ class TestDynamicObject < Test::Unit::TestCase
         assert_equal('Eve', dynobj.wife.firstName)
         assert_equal('Doe', dynobj.wife.lastName)
     end
+    
+    def test_make_from_hash_with_simple_array
+        dynobj = AjGenesis::DynamicObject.makeFromHash({ 'firstName' => 'Adam', 'lastName' => 'Doe', 'data' => [1,2,3] })
+        assert_not_nil(dynobj)
+        assert(dynobj.is_a? AjGenesis::DynamicObject)
+        assert_equal('Doe', dynobj.lastName)
+        assert_equal('Adam', dynobj.firstName)
+        assert_equal([1,2,3], dynobj.data)
+    end
+    
+    def test_make_from_hash_with_array
+        dynobj = AjGenesis::DynamicObject.makeFromHash({ 'firstName' => 'Adam', 'lastName' => 'Doe', 
+            'sons' => [
+                {'name' => 'Cain'},
+                {'name' => 'Abel'}
+            ] })
+        assert_not_nil(dynobj)
+        assert(dynobj.is_a? AjGenesis::DynamicObject)
+        assert_equal('Doe', dynobj.lastName)
+        assert_equal('Adam', dynobj.firstName)
+        assert_equal('Cain', dynobj.sons[0].name)
+        assert_equal('Abel', dynobj.sons[1].name)
+    end
 end
 
