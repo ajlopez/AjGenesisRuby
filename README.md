@@ -6,6 +6,8 @@ AjGenesisRb is a reimplementation of AjGenesis code generation engine, in Ruby.
 
 [Posts about Original Project](http://ajlopez.wordpress.com/category/ajgenesis/)
 
+Ideas: use YAML as model source, use ERB as template engine
+
 ## License
 
 MIT License
