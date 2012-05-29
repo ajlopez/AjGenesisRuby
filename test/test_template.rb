@@ -35,5 +35,10 @@ module AjGenesis
       template = Template.new("${1+2}")
       assert_equal("3", template.render(nil))
     end
+
+    def test_render_simple_interpolation_with_model
+      template = Template.new("${a+b}")
+      assert_equal("3", template.render({ :a => 1, :b => 2}))
+    end
   end
 end

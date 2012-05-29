@@ -9,8 +9,22 @@ module AjGenesis
     end
     
     def render(model)
-      writer = StringWriter.new
-      eval(@code)
+      prelude = ''
+      
+      if model.respond_to?(:each_pair)
+        model.each_pair do |key, value|
+          prelude += key.to_s + " = model[:" + key.to_s + "]\n"
+        end
+      end
+                 
+      writer = StringWriter.new      
+      
+      if prelude != ''
+        eval(prelude + @code)
+      else
+        eval(@code)
+      end
+      
       return writer.result
     end
     
