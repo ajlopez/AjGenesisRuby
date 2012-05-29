@@ -16,30 +16,30 @@ module AjGenesis
       end
     end    
     
-    def self.makeFromHash(hash)
+    def self.make_from_hash(hash)
       obj = DynamicObject.new
       
       hash.each { |key, value |
         if value.is_a? Hash
-          value = makeFromHash(value)
+          value = make_from_hash(value)
         elsif value.is_a? Array
-          value = makeArray(value)
+          value = make_array(value)
         end
         
-        obj.setValue(key.intern, value)
+        obj.set_value(key.intern, value)
       }
       
       return obj
     end
     
-    def self.makeArray(array)
+    def self.make_array(array)
       value = []
       
       array.each {|element|
         if element.is_a? Hash
-          value.push(makeFromHash(element))
+          value.push(make_from_hash(element))
         elsif element.is_a? Array
-          value.push(makeArray(element))
+          value.push(make_array(element))
         else
           value.push(element)
         end
@@ -48,7 +48,7 @@ module AjGenesis
       return value
     end
     
-    def setValue(name, value)
+    def set_value(name, value)
       if (name.is_a? Symbol)
         @values[name] = value
       else
@@ -56,7 +56,7 @@ module AjGenesis
       end
     end
     
-    def getValue(name)
+    def get_value(name)
       if (name.is_a? Symbol)
         return @values[name]
       else

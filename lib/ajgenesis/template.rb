@@ -35,17 +35,17 @@ module AjGenesis
         pos2 = text.index("#>", pos)
         result = ''
         if (pos > 0)
-          result = compileInterpolation(text[0..(pos-1)])
+          result = compile_interpolation(text[0..(pos-1)])
         end
         result += text[(pos+2)..(pos2-1)]
         result += compile(text[(pos2+2)..-1])
         return result
       end
       
-      return compileInterpolation(text)
+      return compile_interpolation(text)
     end
     
-    def self.compileInterpolation(text)
+    def self.compile_interpolation(text)
       if !text
         return ''
       end
@@ -56,11 +56,11 @@ module AjGenesis
         result = ''
         
         if (pos > 0)
-          result = compileInterpolation(text[0..(pos-1)])
+          result = compile_interpolation(text[0..(pos-1)])
         end
           
         result += "writer.write(" + text[(pos+2)..(pos2-1)] + ")\n"
-        result += compileInterpolation(text[(pos2+2)..-1])
+        result += compile_interpolation(text[(pos2+2)..-1])
         return result
       else
         return "writer.write(" + text.dump + ")\n";

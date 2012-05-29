@@ -33,7 +33,7 @@ class TestDynamicObject < Test::Unit::TestCase
     end
     
     def test_make_from_simple_hash
-        dynobj = AjGenesis::DynamicObject.makeFromHash({ 'firstName' => 'Adam', 'lastName' => 'Doe' })
+        dynobj = AjGenesis::DynamicObject.make_from_hash({ 'firstName' => 'Adam', 'lastName' => 'Doe' })
         assert_not_nil(dynobj)
         assert(dynobj.is_a? AjGenesis::DynamicObject)
         assert_equal('Doe', dynobj.lastName)
@@ -41,7 +41,7 @@ class TestDynamicObject < Test::Unit::TestCase
     end
     
     def test_make_from_nested_hash
-        dynobj = AjGenesis::DynamicObject.makeFromHash({ 'firstName' => 'Adam', 'lastName' => 'Doe',
+        dynobj = AjGenesis::DynamicObject.make_from_hash({ 'firstName' => 'Adam', 'lastName' => 'Doe',
             'wife' => { 'firstName' => 'Eve', 'lastName' => 'Doe' }
         })
         assert_not_nil(dynobj)
@@ -54,7 +54,7 @@ class TestDynamicObject < Test::Unit::TestCase
     end
     
     def test_make_from_hash_with_simple_array
-        dynobj = AjGenesis::DynamicObject.makeFromHash({ 'firstName' => 'Adam', 'lastName' => 'Doe', 'data' => [1,2,3] })
+        dynobj = AjGenesis::DynamicObject.make_from_hash({ 'firstName' => 'Adam', 'lastName' => 'Doe', 'data' => [1,2,3] })
         assert_not_nil(dynobj)
         assert(dynobj.is_a? AjGenesis::DynamicObject)
         assert_equal('Doe', dynobj.lastName)
@@ -63,7 +63,7 @@ class TestDynamicObject < Test::Unit::TestCase
     end
     
     def test_make_from_hash_with_array
-        dynobj = AjGenesis::DynamicObject.makeFromHash({ 'firstName' => 'Adam', 'lastName' => 'Doe', 
+        dynobj = AjGenesis::DynamicObject.make_from_hash({ 'firstName' => 'Adam', 'lastName' => 'Doe', 
             'sons' => [
                 {'name' => 'Cain'},
                 {'name' => 'Abel'}
