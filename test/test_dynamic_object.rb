@@ -82,5 +82,13 @@ class TestDynamicObject < Test::Unit::TestCase
       assert_equal('Doe', dynobj.lastName)
       assert_equal('Adam', dynobj.firstName)
     end
+    def test_make_from_nested_string
+      dynobj = AjGenesis::DynamicObject.make_from_string('{ "firstName": "Adam", "lastName": "Doe", "sons": [ { "name": "Cain" }, {"name": "Abel"} ]}')
+      assert(dynobj.is_a? AjGenesis::DynamicObject)
+      assert_equal('Doe', dynobj.lastName)
+      assert_equal('Adam', dynobj.firstName)
+      assert_equal('Cain', dynobj.sons[0].name)
+      assert_equal('Abel', dynobj.sons[1].name)
+    end
 end
 
