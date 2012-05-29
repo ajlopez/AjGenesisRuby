@@ -38,7 +38,14 @@ module AjGenesis
           result = compile_interpolation(text[0..(pos-1)])
         end
         result += text[(pos+2)..(pos2-1)]
-        result += compile(text[(pos2+2)..-1])
+        rest = text[(pos2+2)..-1]
+        if rest.length > 0 and rest[0] == "\r"
+          rest = rest[1..-1]
+        end
+        if rest.length > 0 and rest[0] == "\n"
+          rest = rest[1..-1]
+        end
+        result += compile(rest)
         return result
       end
       
@@ -60,7 +67,7 @@ module AjGenesis
         end
           
         result += "writer.write(" + text[(pos+2)..(pos2-1)] + ")\n"
-        result += compile_interpolation(text[(pos2+2)..-1])
+        result += compile_interpolation(text[(pos2+1)..-1])
         return result
       else
         return "writer.write(" + text.dump + ")\n";

@@ -10,8 +10,15 @@ module AjGenesis
     end
     
     def test_transform_hello_name
-      result = transform_file('hello_name.tpl', 'hello.txt', { :name => "Adam" })
+      result = transform_file('hello_name.tpl', 'hello_name.txt', { :name => "Adam" })
       assert(result.index('Hello, Adam'))
+    end
+    
+    def test_transform_messages
+      result = transform_file('messages.tpl', 'messages.txt', { :name => "Adam" })
+      (1..6).each do |k|
+        assert(result.index('Message ' + k.to_s))
+      end
     end
     
     def transform_file(source, target, model)
