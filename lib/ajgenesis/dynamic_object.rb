@@ -1,4 +1,7 @@
 
+require 'psych'
+require 'yaml'
+
 module AjGenesis
 
   class DynamicObject
@@ -30,6 +33,10 @@ module AjGenesis
       }
       
       return obj
+    end
+    
+    def self.make_from_string(text)
+      return make_from_hash(YAML::load(text))
     end
     
     def self.make_array(array)
