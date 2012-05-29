@@ -12,7 +12,7 @@ project = AjGenesis::DynamicObject.make_from_file(filename('project.yml'))
 
 model = { :project => project }
 
-AjGenesis::transform_file(filename('program.tpl', 'program.rb', model))
+AjGenesis::transform_file(filename('program.tpl'), filename('program.rb'), model)
 
 
 
