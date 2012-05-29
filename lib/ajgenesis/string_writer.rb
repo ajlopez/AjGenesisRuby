@@ -9,7 +9,7 @@ module AjGenesis
     end
 
     def write(text)
-      @result += text
+      @result += text.to_s
     end
   end
 
