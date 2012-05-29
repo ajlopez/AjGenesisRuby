@@ -1,6 +1,7 @@
 
 require 'ajgenesis/dynamic_object.rb'
 require 'ajgenesis/string_writer.rb'
+require 'ajgenesis/template.rb'
 
 module AjGenesis
 
