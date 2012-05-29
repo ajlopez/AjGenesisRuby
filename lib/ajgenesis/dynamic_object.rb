@@ -39,6 +39,10 @@ module AjGenesis
       return make_from_hash(YAML::load(text))
     end
     
+    def self.make_from_file(filename)
+      return make_from_string(IO.read(filename))
+    end
+    
     def self.make_array(array)
       value = []
       
