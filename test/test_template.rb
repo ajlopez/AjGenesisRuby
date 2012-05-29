@@ -40,5 +40,16 @@ module AjGenesis
       template = Template.new("${a+b}")
       assert_equal("3", template.render({ :a => 1, :b => 2}))
     end
+
+    def test_compile_code_and_interpolation
+      code = Template.compile("<# a = 1; b = 2; #>${a+b}")
+      assert(code.index("a = 1; b = 2;"))
+      assert(code.index("writer.write(a+b)"))
+    end
+
+    def test_render_code_and_interpolation
+      template = Template.new("<# a = 1; b = 2; #>${a+b}")
+      assert_equal("3", template.render(nil))
+    end
   end
 end

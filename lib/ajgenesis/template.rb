@@ -33,7 +33,10 @@ module AjGenesis
       
       if !pos.nil?
         pos2 = text.index("#>", pos)
-        result = compileInterpolation(text[0..(pos-1)])
+        result = ''
+        if (pos > 0)
+          result = compileInterpolation(text[0..(pos-1)])
+        end
         result += text[(pos+2)..(pos2-1)]
         result += compile(text[(pos2+2)..-1])
         return result
