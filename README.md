@@ -1,6 +1,6 @@
-# AjGenesisRb
+# AjGenesisRuby
 
-AjGenesisRb is a reimplementation of AjGenesis code generation engine, in Ruby.
+AjGenesisRuby is a reimplementation of AjGenesis code generation engine, in Ruby.
 
 [Original Project AjGenesis](http://ajgenesis.codeplex.com/)
 
