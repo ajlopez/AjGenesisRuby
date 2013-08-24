@@ -1,6 +1,7 @@
 
+
 require 'psych'
-require 'yaml'
+require 'json'
 
 module AjGenesis
 
@@ -36,7 +37,7 @@ module AjGenesis
     end
     
     def self.make_from_string(text)
-      return make_from_hash(YAML::load(text))
+      return make_from_hash(JSON.parse(text))
     end
     
     def self.make_from_file(filename)

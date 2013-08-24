@@ -5,6 +5,3 @@ task :test do
   ruby "-I./lib;./test test/test.rb"
 end
 
-task :repl do
-  ruby "-I./lib;./test ./ajlisprepl.rb"
-end

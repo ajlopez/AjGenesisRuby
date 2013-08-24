@@ -8,7 +8,7 @@ def filename(name)
   return File.expand_path(name, File.dirname(__FILE__))
 end
 
-project = AjGenesis::DynamicObject.make_from_file(filename('project.yml'))
+project = AjGenesis::DynamicObject.make_from_file(filename('project.json'))
 
 model = { :project => project }
 

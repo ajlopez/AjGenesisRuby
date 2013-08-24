@@ -93,7 +93,7 @@ class TestDynamicObject < Test::Unit::TestCase
     end
     
     def test_make_from_file
-      dynobj = AjGenesis::DynamicObject.make_from_file(File.expand_path('adam.yml', File.dirname(__FILE__)))
+      dynobj = AjGenesis::DynamicObject.make_from_file(File.expand_path('adam.json', File.dirname(__FILE__)))
       assert(dynobj.is_a? AjGenesis::DynamicObject)
       assert_equal('Smith', dynobj.last_name)
       assert_equal('Adam', dynobj.first_name)
