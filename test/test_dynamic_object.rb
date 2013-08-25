@@ -26,6 +26,39 @@ class TestDynamicObject < Test::Unit::TestCase
       assert_equal("Adam", dynobj.firstName)
       assert_equal("Doe", dynobj.lastName)
     end
+
+    def test_set_and_get_values_using_methods
+      dynobj = AjGenesis::DynamicObject.new
+      dynobj.set_value("firstName", "Adam")
+      dynobj.set_value("lastName", "Doe")
+      assert_equal("Adam", dynobj.get_value("firstName"))
+      assert_equal("Doe", dynobj.get_value("lastName"))
+    end
+
+    def test_set_and_get_values_using_methods_and_array
+      dynobj = AjGenesis::DynamicObject.new
+      dynobj.set_value("firstName", "Adam")
+      dynobj.set_value("lastName", "Doe")
+      assert_equal("Adam", dynobj[:firstName])
+      assert_equal("Doe", dynobj[:lastName])
+    end
+    
+    def test_each_pair
+      dynobj = AjGenesis::DynamicObject.new
+      
+      dynobj.firstName = "Adam"
+      dynobj.lastName = "Doe"
+      
+      counter = 0
+      
+      dynobj.each_pair do |key, value|
+        counter = counter + 1
+        assert(key == :firstName || key == :lastName)
+        assert((key == :firstName && value == "Adam") || (key == :lastName && value == "Doe"))
+      end
+      
+      assert_equal(2, counter)
+    end
     
     def test_nil_has_nil_properties
       assert_nil(nil.foo)

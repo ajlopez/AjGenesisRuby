@@ -75,7 +75,16 @@ module AjGenesis
         return @values[name.intern]
       end
     end
+    
+    def each_pair
+      @values.each_pair do |key, value|
+        yield key, value
+      end
+    end
+    
+    def [](name)
+      self.get_value(name)
+    end
   end
-
 end
 

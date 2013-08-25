@@ -1,0 +1,17 @@
+{
+    "name": "myapp",
+    "title": "My Application",
+    "author": "@ajlopez",
+    "entities": [
+        {
+            "name": "customer",
+            "descriptor": "Customer",
+            "description": "Customer"
+        },
+        {
+            "name": "supplier",
+            "descriptor": "Supplier",
+            "description": "Supplier"
+        }
+    ]
+}
