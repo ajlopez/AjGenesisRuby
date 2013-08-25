@@ -9,6 +9,7 @@ if not Dir.exists?("build")
   Dir.mkdir("build")
 end
 
+FileUtils.cp("source/repository.rb", "build/repository.rb")
 FileUtils.cp_r("source/public", "build")
 FileUtils.cp_r("source/views", "build")
 
@@ -24,6 +25,7 @@ AjGenesis::transform_file(filename('templates/views/layout.erb.tpl'), filename('
 model.entities.each do | entity |
   AjGenesis::transform_file(filename('templates/entity.rb.tpl'), filename('build/' + entity.name + '.rb'), { :entity => entity })
   AjGenesis::transform_file(filename('templates/views/list.erb.tpl'), filename('build/views/' + entity.name + 'list.erb'), { :entity => entity })
+  AjGenesis::transform_file(filename('templates/views/new.erb.tpl'), filename('build/views/' + entity.name + 'new.erb'), { :entity => entity })
 end
 
 

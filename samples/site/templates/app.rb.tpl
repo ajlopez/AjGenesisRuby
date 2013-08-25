@@ -13,10 +13,33 @@ end
 entities.each do |entity|
 #>
 
+require '${entity.name}'
+
+${entity.name}_repository = Repository.new()
+
 get '/${entity.name}' do
     @title = '${entity.setdescriptor}'
-    @${entity.name}_list = [ '${entity.name} 1', '${entity.name} 2' ]
+    @${entity.name}_list = ${entity.name}_repository.get_items
     erb :${entity.name}list
+end
+
+get '/${entity.name}/new' do
+    @title = 'New ${entity.descriptor}'
+    erb :${entity.name}new
+end
+
+post '/${entity.name}/new' do
+    ${entity.name} = ${entity.descriptor}.new()
+<#
+    entity.properties.each do | property |
+        next if property.name == 'id'
+#>
+    ${entity.name}.${property.name} = params[:${property.name}]
+    ${entity.name}_repository.add(${entity.name})
+    redirect to('/${entity.name}')
+<#
+    end
+#>
 end
 <#
 end

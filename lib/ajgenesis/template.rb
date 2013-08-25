@@ -17,8 +17,8 @@ module AjGenesis
         end
       end
                  
-      writer = StringWriter.new      
-      
+      writer = StringWriter.new
+            
       if prelude != ''
         eval(prelude + @code)
       else
