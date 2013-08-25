@@ -14,7 +14,8 @@ entities.each do |entity|
 #>
 
 get '/${entity.name}' do
-    @title = '${entity.descriptor} List'
+    @title = '${entity.setdescriptor}'
+    @${entity.name}_list = [ '${entity.name} 1', '${entity.name} 2' ]
     erb :${entity.name}list
 end
 <#

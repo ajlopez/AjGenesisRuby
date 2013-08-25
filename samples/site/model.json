@@ -6,12 +6,35 @@
         {
             "name": "customer",
             "descriptor": "Customer",
-            "description": "Customer"
+            "setdescriptor": "Customers",
+            "description": "Customer",
+            "properties": [
+                {
+                    "name": "id",
+                    "descriptor": "Id"
+                },
+                {
+                    "name": "name",
+                    "descriptor": "Name"
+                }
+            ]
         },
         {
             "name": "supplier",
             "descriptor": "Supplier",
-            "description": "Supplier"
+            "setdescriptor": "Suppliers",
+            "description": "Supplier",
+            "properties": [
+                {
+                    "name": "id",
+                    "descriptor": "Id"
+                },
+                {
+                    "name": "name",
+                    "descriptor": "Name"
+                }
+            ]
         }
     ]
 }
+

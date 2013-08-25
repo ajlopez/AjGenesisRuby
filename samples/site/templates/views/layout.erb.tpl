@@ -21,12 +21,17 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/">My Bootstrap</a>
+          <a class="navbar-brand" href="/">${title}</a>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li><a href="/customers">Customers</a></li>
-            <li><a href="/suppliers">Suppliers</a></li>
+<#
+    entities.each do | entity |
+#>          
+            <li><a href="/${entity.name}">${entity.setdescriptor}</a></li>
+<#
+    end
+#>          
             <li><a href="/about">About</a></li>
           </ul>
         </div><!--/.nav-collapse -->
